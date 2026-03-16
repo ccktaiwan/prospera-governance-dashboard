@@ -1,0 +1,184 @@
+<!-- =========================================================
+AI HEADER
+=========================================================
+FILE: dashboard.html
+MODULE: prospera_governance_dashboard
+COMPONENT: Architect_UI
+TYPE: Web Visualization Interface
+PURPOSE: Provide a browser-based visualization interface
+         for the Prospera Governance Observability Layer.
+
+GOVERNANCE_AUTHORITY: Prospera Governance Core
+ARCHITECTURE_LAYER: SG - Observability
+SPECIFICATION_MATRIX: PGC-REG-MATRIX-2026-034
+SCHEMA_VERSION: 1.0
+
+DEPENDENCIES:
+- dashboard_api.py
+- registry_service.py
+- Prospera Global Inventory (SSOT)
+
+DATA SOURCES:
+- /system-health
+- /repository-topology
+- /governance-alerts
+
+AUTHOR: Prospera Architecture Authority
+========================================================= -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Prospera Governance Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<style>
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:#0f1115;
+    color:#e8e8e8;
+    margin:0;
+    padding:40px;
+}
+
+header{
+    border-bottom:1px solid #333;
+    margin-bottom:40px;
+}
+
+h1{
+    font-size:28px;
+    font-weight:600;
+}
+
+section{
+    margin-bottom:40px;
+}
+
+.card{
+    background:#1a1d23;
+    padding:20px;
+    border-radius:8px;
+}
+
+pre{
+    overflow:auto;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+
+<h1>Prospera Governance Dashboard</h1>
+
+<p>
+Observability interface for the Prospera AI Consulting Operating System.
+This interface visualizes governance status, repository topology,
+and compliance alerts derived from the SSOT Registry Layer.
+</p>
+
+</header>
+
+
+<section>
+
+<h2>System Health</h2>
+
+<div class="card">
+<pre id="system-health">Loading...</pre>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>Repository Topology</h2>
+
+<div class="card">
+<pre id="repo-topology">Loading...</pre>
+</div>
+
+</section>
+
+
+<section>
+
+<h2>Governance Alerts</h2>
+
+<div class="card">
+<pre id="alerts">Loading...</pre>
+</div>
+
+</section>
+
+
+
+<script>
+
+async function fetchSystemHealth(){
+
+    const response = await fetch("/system-health")
+
+    const data = await response.json()
+
+    document.getElementById("system-health").textContent =
+        JSON.stringify(data,null,2)
+}
+
+
+
+async function fetchTopology(){
+
+    const response = await fetch("/repository-topology")
+
+    const data = await response.json()
+
+    document.getElementById("repo-topology").textContent =
+        JSON.stringify(data,null,2)
+}
+
+
+
+async function fetchAlerts(){
+
+    const response = await fetch("/governance-alerts")
+
+    const data = await response.json()
+
+    document.getElementById("alerts").textContent =
+        JSON.stringify(data,null,2)
+}
+
+
+
+async function initializeDashboard(){
+
+    await fetchSystemHealth()
+
+    await fetchTopology()
+
+    await fetchAlerts()
+}
+
+
+initializeDashboard()
+
+</script>
+
+
+</body>
+
+</html>
