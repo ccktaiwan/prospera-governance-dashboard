@@ -1,0 +1,182 @@
+/* =========================================================
+AI HEADER
+=========================================================
+FILE: dashboard.css
+MODULE: prospera_governance_dashboard
+COMPONENT: Architect_UI
+TYPE: Visualization Style Layer
+
+PURPOSE
+-------
+Define the visual styling and layout rules for the Prospera
+Governance Dashboard Architect UI.
+
+This stylesheet establishes a minimal yet production-ready
+visual system suitable for governance monitoring consoles.
+
+The design philosophy emphasizes:
+
+• clarity of governance telemetry
+• strong contrast for operational visibility
+• structured card-based observability panels
+
+ARCHITECTURE LAYER
+------------------
+SG - Observability
+
+DEPENDENCIES
+------------
+dashboard.html
+dashboard.js
+
+GOVERNANCE AUTHORITY
+--------------------
+Prospera Governance Core
+
+SPECIFICATION MATRIX
+--------------------
+PGC-REG-MATRIX-2026-034
+
+SCHEMA VERSION
+--------------
+1.0
+========================================================= */
+
+
+/* -------------------------------------------------------
+GLOBAL LAYOUT
+------------------------------------------------------- */
+
+body {
+
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+
+    background-color: #0f1115;
+
+    color: #e6e6e6;
+
+    margin: 0;
+
+    padding: 40px;
+
+}
+
+
+/* -------------------------------------------------------
+HEADER
+------------------------------------------------------- */
+
+header {
+
+    margin-bottom: 40px;
+
+    border-bottom: 1px solid #2b2f36;
+
+    padding-bottom: 20px;
+
+}
+
+header h1 {
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+}
+
+header p {
+
+    color: #a0a6b2;
+
+}
+
+
+/* -------------------------------------------------------
+SECTION LAYOUT
+------------------------------------------------------- */
+
+section {
+
+    margin-bottom: 40px;
+
+}
+
+section h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* -------------------------------------------------------
+CARD COMPONENT
+------------------------------------------------------- */
+
+.card {
+
+    background-color: #1a1d23;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    box-shadow: 0 0 8px rgba(0,0,0,0.35);
+
+}
+
+
+/* -------------------------------------------------------
+DATA BLOCK
+------------------------------------------------------- */
+
+pre {
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+
+    font-family: Consolas, monospace;
+
+    font-size: 13px;
+
+}
+
+
+/* -------------------------------------------------------
+GOVERNANCE ALERT COLORS
+------------------------------------------------------- */
+
+.alert-critical {
+
+    color: #ff4c4c;
+
+}
+
+.alert-warning {
+
+    color: #ffb347;
+
+}
+
+.alert-info {
+
+    color: #4aa3ff;
+
+}
+
+
+/* -------------------------------------------------------
+RESPONSIVE LAYOUT
+------------------------------------------------------- */
+
+@media screen and (max-width: 900px) {
+
+    body {
+
+        padding: 20px;
+
+    }
+
+}
